@@ -1,5 +1,5 @@
 import * as constant from "../constant";
-import * as fetchData from "../../service/index";
+import * as fetchData from "../../services";
 
 export default {
     updateName: (name) => (dispatch) => {

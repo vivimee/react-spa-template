@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
-import Routes from "../routes/index.jsx";
+import createRoutes from "../routes";
 import createStore from './createStore';
-import reducers from '../redux/reducer';
+import reducers from '../redux/reducers';
 
 const store = createStore(reducers);
 
@@ -13,7 +13,7 @@ export default class Application extends Component {
         return (
             <Provider store={store}>
                 <BrowserRouter>
-                    <Routes />
+                    {createRoutes()}
                 </BrowserRouter>
             </Provider>
         );

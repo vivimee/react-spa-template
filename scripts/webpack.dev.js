@@ -14,6 +14,7 @@ const devServerOptions = {
     hot: true,
     noInfo: true,
     open: true,
+    historyApiFallback: true,
     stats: {
         chunks: false,
         assets: false,
