@@ -1,7 +1,8 @@
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import WebpackProgressPlugin from 'progress-bar-webpack-plugin';
 
-export const PROJECT_ROOT = path.resolve(__dirname, '../');
+export const PROJECT_ROOT = path.resolve(__dirname, '..');
 
 export default {
     entry: "./src/index.js",
@@ -12,12 +13,22 @@ export default {
     module: {
         rules: [
             {
-                test: /\.jsx?/,
+                test: /\.jsx?$/,
+                exclude: /node_modules/,
                 use: "babel-loader"
+            },
+            {
+                test: /\.(css|less)$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'less-loader'
+                ]
             }
         ]
     },
     plugins: [
+        new WebpackProgressPlugin(),
         new HtmlWebpackPlugin()
     ]
 }

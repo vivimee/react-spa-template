@@ -4,7 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "node ./scripts/build.dev.js"
+    "dev": "node ./scripts/script.dev.js",
+    "build": "node ./scripts/script.prod.js",
+    "publish": "npm run build && node ./scripts/script.publish.js"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
@@ -13,7 +15,12 @@
     "@babel/register": "^7.5.5",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.1.0",
     "html-webpack-plugin": "^3.2.0",
+    "less": "^3.9.0",
+    "less-loader": "^5.0.0",
+    "progress-bar-webpack-plugin": "^1.12.1",
+    "style-loader": "^0.23.1",
     "webpack": "^4.36.1",
     "webpack-dev-server": "^3.7.2",
     "webpack-merge": "^4.2.1"

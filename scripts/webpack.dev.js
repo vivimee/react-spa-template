@@ -13,7 +13,7 @@ const devServerOptions = {
     host: 'localhost',
     hot: true,
     noInfo: true,
-    open: true,
+    // open: true,
     historyApiFallback: true,
     stats: {
         chunks: false,
