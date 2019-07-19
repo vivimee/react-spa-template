@@ -1,6 +1,7 @@
 import webpack from 'webpack';
 import merge from 'webpack-merge';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import VisualizerPlugin from 'webpack-visualizer-plugin';
 
 import webpackConfig from './webpack.config';
 
@@ -10,7 +11,10 @@ const config = merge(webpackConfig, {
         chunkFilename: 'js/[name].min.[chunkhash].js',
     },
     mode: 'production',
-    plugins: [new CleanWebpackPlugin()],
+    optimization: {
+        moduleIds: 'hashed',
+    },
+    plugins: [new CleanWebpackPlugin(), new VisualizerPlugin()],
 });
 
 const compiler = webpack(config);

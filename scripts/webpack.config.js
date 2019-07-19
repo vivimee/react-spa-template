@@ -8,14 +8,31 @@ export default {
     entry: "./src/index.js",
     output: {
         filename: "js/[name].js",
-        path: path.resolve(PROJECT_ROOT, "dist")
+        path: path.resolve(PROJECT_ROOT, "dist"),
+    },
+    resolve: {
+        extensions: ['.js', '.jsx', '.*'],
+    },
+    optimization: {
+        runtimeChunk: {
+            name: 'runtime',
+        },
+        splitChunks: {
+            chunks: 'all',
+        },
     },
     module: {
         rules: [
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                use: "babel-loader"
+                use: [
+                    "babel-loader",
+                    {
+                        loader: 'eslint-loader',
+                        options: { fix: true }
+                    }
+                ]
             },
             {
                 test: /\.(css|less)$/,
@@ -24,7 +41,19 @@ export default {
                     'css-loader',
                     'less-loader'
                 ]
-            }
+            },
+            {
+                test: /\.(jpe?g|png|gif)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8192,
+                            outputPath: 'images',
+                        },
+                    },
+                ],
+            },
         ]
     },
     plugins: [
