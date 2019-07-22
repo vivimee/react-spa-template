@@ -1,8 +1,10 @@
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import WebpackProgressPlugin from 'progress-bar-webpack-plugin';
+import packageJson from '../package.json';
 
 export const PROJECT_ROOT = path.resolve(__dirname, '..');
+const TEMPLATES_DIR = path.resolve(PROJECT_ROOT, 'src', 'templates');
 
 export default {
     entry: "./src/index.js",
@@ -21,6 +23,13 @@ export default {
             chunks: 'all',
         },
     },
+    plugins: [
+        new WebpackProgressPlugin(),
+        new HtmlWebpackPlugin({
+            title: packageJson.name,
+            template: path.resolve(TEMPLATES_DIR, 'index.html')
+        })
+    ],
     module: {
         rules: [
             {
@@ -55,9 +64,5 @@ export default {
                 ],
             },
         ]
-    },
-    plugins: [
-        new WebpackProgressPlugin(),
-        new HtmlWebpackPlugin()
-    ]
+    }
 }
