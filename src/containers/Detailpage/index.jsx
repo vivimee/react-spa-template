@@ -1,8 +1,7 @@
 import React from 'react';
-import AppContainer from '../AppContainer';
 
 export default () => (
-  <AppContainer>
+  <div>
     <h4>detailpage</h4>
-  </AppContainer>
+  </div>
 );

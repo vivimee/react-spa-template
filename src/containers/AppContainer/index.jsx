@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import './index.less';
@@ -7,6 +7,7 @@ import './index.less';
 class AppContainer extends Component {
   componentDidMount() {
     window.scrollTo(0, 0);
+    console.log(this.constructor.name, this.props);
   }
 
   render() {
@@ -24,4 +25,4 @@ class AppContainer extends Component {
   }
 }
 
-export default connect(state => ({ store: state }))(AppContainer);
+export default withRouter(connect(state => ({ store: state }))(AppContainer));

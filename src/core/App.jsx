@@ -5,13 +5,16 @@ import { BrowserRouter } from 'react-router-dom';
 import createRoutes from '../routes';
 import createStore from './createStore';
 import reducers from '../redux/reducers';
+import AppContainer from '../containers/AppContainer';
 
 const store = createStore(reducers);
 
 export default () => (
   <Provider store={store}>
     <BrowserRouter>
-      {createRoutes()}
+      <AppContainer>
+        {createRoutes()}
+      </AppContainer>
     </BrowserRouter>
   </Provider>
 );
