@@ -1,5 +1,5 @@
-## React Spa Template
-A react project template.
+## React Single-page-application Template
+A single page react project template.
 
 ## Overview
 ```
@@ -20,12 +20,12 @@ react-spa-template
     ├── components      // react components
     ├── containers      // specify a container for every page
     ├── core
-        |-- App.jsx     // application's root element, handle store and route
+        |-- App.jsx     // application's root element, bootstrap the application
     ├── redux           // specify actions, reducers and action-constant
     ├── services        // handle requests with server
     ├── routes          // specify routes
     └── templates       
-        └── index.html  // js will be injected to the html
+        └── index.html  // js resources will be injected to the html
 ```
 
 ### Get Started
@@ -44,7 +44,6 @@ yarn dev
 3. Specify a route
 ```js
 const Homepage = Loadable({
-  ...options,
   loader: () => import(/* webpackChunkName: "home-page" */'../containers/Homepage'),
 });
 
