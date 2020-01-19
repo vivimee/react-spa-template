@@ -18,7 +18,7 @@ react-spa-template
 └── src
     ├── assets          // static resource
     ├── components      // react components
-    ├── containers      // specify a container for every page
+    ├── containers      // specify a container for each page
     ├── core
         |-- App.jsx     // application's root element, bootstrap the application
     ├── redux           // specify actions, reducers and action-constant
