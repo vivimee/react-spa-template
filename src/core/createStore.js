@@ -11,6 +11,8 @@ export default reducers => createStore(
   combineReducers({ ...reducers, loadingBar: loadingBarReducer }),
   compose(
     applyMiddleware(thunk, logger),
-    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f,
+    window.__REDUX_DEVTOOLS_EXTENSION__
+      ? window.__REDUX_DEVTOOLS_EXTENSION__({ trace: true })
+      : f => f,
   ),
 );

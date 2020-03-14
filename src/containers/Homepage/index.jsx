@@ -1,9 +1,36 @@
-import React from 'react';
-import HeadSrc from '../../assets/head.jpeg';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import actions from './action';
 
-export default () => (
-  <div>
-    <h4>homepage</h4>
-    <img alt=" " src={HeadSrc} style={{ width: '100px' }} />
-  </div>
-);
+class Homepage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  componentDidMount() {
+    const { setName } = this.props;
+    setName('halo');
+  }
+
+  render() {
+    const { homepage: { name }, setName, fetchName } = this.props;
+    return (
+      <div>
+        <h1>Home</h1>
+        <h4>{name}</h4>
+        <button type="button" onClick={() => setName('setName')}>setName</button>
+        <button type="button" onClick={() => fetchName()}>fetchName</button>
+      </div>
+    );
+  }
+}
+
+export default connect(
+  state => ({
+    homepage: state.homepage,
+  }),
+  {
+    ...actions,
+  },
+)(Homepage);
